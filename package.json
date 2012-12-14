@@ -1,0 +1,12 @@
+{
+  "name": "basbosa-registry",
+  "version": "0.0.1",
+  "description": "A universal JavaScript class registry that is part of Basbosa framework",
+  "author": {
+    "name": "Youssef Garas",
+    "email": "ygaras@hub43.com"
+  },
+  "dependencies": {
+	"requirejs": "2.0.4"
+  }   
+}

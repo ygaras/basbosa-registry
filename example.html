@@ -1,0 +1,25 @@
+<html>
+	<head>
+		 <script src="basbosa-registry-min.js" type="text/javascript"></script>
+		 <script src="https://raw.github.com/ygaras/basbosa-logger/master/basbosa-logger-min.js" type="text/javascript"></script>
+		 
+		 
+		<script>
+			// Check how the Logger can be invoked using Basbosa 
+			var B = Basbosa;
+			B('Logger').info('Inform the user Basbosa is loaded');
+			
+			(function(){
+				var someClass = {
+					bar	: 'foo'
+				};
+				B.add('someClass', someClass);
+			})();
+			B('Logger').info(B('someClass').bar);
+					
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

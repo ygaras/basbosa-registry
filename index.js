@@ -28,7 +28,7 @@
 
 	Basbosa.add = function(className, instance) {
 		Basbosa.classes = Basbosa.classes || [];
-		Basbosa.classes[className] = instance;
+		return Basbosa.classes[className] = instance;
 	};
 	
 	return Basbosa;

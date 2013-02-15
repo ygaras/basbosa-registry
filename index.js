@@ -17,19 +17,48 @@
     root.Basbosa = factory(root);
   }
 }(this, function(root) {
-	var Basbosa = function Basbosa(className) {
-		if (!className) return Basbosa;
-		if (Basbosa.classes[className]) {
+	var Basbosa = function Basbosa(className, cb) {
+        var results = [];
+        if (!className) return Basbosa;
+
+        // Returning list of classes
+        if (className instanceof RegExp) {
+            for (var registeredClassName in Basbosa.classes) {
+                if (className.test(registeredClassName)) results.push(Basbosa(registeredClassName));
+            }
+
+            return results;
+        }
+
+        // TODO: Add this functionality!
+        // If the class is a model class, check if we can create if if AutoModels is loaded and
+        // a callback function was provided
+//        if (!Basbosa.added(className)
+//            && /Model$/.test(className)
+//            && !Basbosa.added(className)
+//            && typeof cb === 'function') {
+//          return Basbosa('AutoModel').createModelClass(className, {}, {}, cb);
+//        }
+
+
+        if (typeof Basbosa.classes[className] !== 'undefined') {
 			return Basbosa.classes[className];
 		} else {
-			new Error('Class ' + className + ' not defined or loaded yet');
+			throw new Error('Class ' + className + ' not defined or loaded yet');
 		}
 	};
 
+    Basbosa.classes = {};
+
 	Basbosa.add = function(className, instance) {
-		Basbosa.classes = Basbosa.classes || [];
 		return Basbosa.classes[className] = instance;
 	};
+
+    Basbosa.added = function(className) {
+      return Basbosa.classes[className] !== 'undefined';
+    };
+
+
 	
 	return Basbosa;
 }));

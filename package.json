@@ -7,6 +7,6 @@
     "email": "ygaras@hub43.com"
   },
   "dependencies": {
-	"requirejs": "2.0.4"
+    "requirejs": "2.0.4"
   }   
 }

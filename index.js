@@ -50,8 +50,17 @@
 
     Basbosa.classes = {};
 
-	Basbosa.add = function(className, instance) {
-		return Basbosa.classes[className] = instance;
+	Basbosa.add = function(className, _class) {
+    if ((typeof _class.registeredName !== 'undefined') && _class.registeredName !== className) {
+      var err = 'You are setting the registeredName property of the object to ' + _class.registeredName;
+      err += "\n\r and registering with Basbosa with the name " + className;
+      err += "\n\r either remove the property registeredName from your object "
+      err += "\n\r or set it to " + className;
+
+      throw new Error(err);
+    }
+    _class.registeredName = className;
+		return Basbosa.classes[className] = _class;
 	};
 
     Basbosa.added = function(className) {

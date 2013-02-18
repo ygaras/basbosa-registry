@@ -51,15 +51,14 @@
     Basbosa.classes = {};
 
 	Basbosa.add = function(className, _class) {
+    if (Basbosa.added(className)) throw new Error('You have added class ' + className + ' before');
     _class.__registeredName = className;
 		return Basbosa.classes[className] = _class;
 	};
 
-    Basbosa.added = function(className) {
-      return Basbosa.classes[className] !== 'undefined';
-    };
+  Basbosa.added = function(className) {
+    return typeof Basbosa.classes[className] !== 'undefined';
+  };
 
-
-	
 	return Basbosa;
 }));
